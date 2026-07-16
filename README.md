@@ -1,22 +1,22 @@
-# SQL & Python Practice 🧪
+# Pratique SQL & Python — Data Science
 
-Exercises and mini-projects to build solid foundations
-in SQL and Python for data analysis.
+Exercices progressifs SQL et Python pour l'analyse de données.
+De la syntaxe de base aux requêtes avancées niveau Data Scientist.
 
-**Tools**
-`Python` `SQL` `SQLite` `Pandas` `Jupyter`
+## Contenu
 
-## Content
+| Notebook | Sujet | Niveau | Statut |
+|---|---|---|---|
+| 01_sql_basics.ipynb | SELECT, WHERE, GROUP BY, JOIN | Bases | ✅ Terminé |
+| 02_sql_advanced.ipynb | Window Functions, CTEs, Subqueries | Avancé | 🔄 En cours |
+| 03_pandas_advanced.ipynb | groupby, merge, apply, pivot | Avancé | 📅 Prévu |
 
-| Notebook | Topic | Status |
-|---|---|---|
-| `sql/basics/01_sql_basics.ipynb` | SELECT, WHERE, GROUP BY, HAVING, JOIN | ✅ Done |
-| `python/pandas` | DataFrames, cleaning, aggregation | 🔜 Coming |
+## Ce que j'ai appris
+- 10 requêtes SQL progressives sur base SQLite — des bases aux jointures 3 tables
+- Fonctions d'agrégation : COUNT, AVG, SUM, HAVING
+- Connexion SQLite → Python → Pandas
 
-## What I learned
-- SQLite database creation directly in Python
-- 10 progressive SQL queries from basics to 3-table JOINs
-- Aggregation functions : COUNT, AVG, SUM
-- Connecting SQL results to Pandas DataFrames
-
-*Updated regularly as I progress.*
+## Prochaines étapes
+- Window functions : RANK, ROW_NUMBER, LAG, LEAD
+- CTEs et subqueries corrélées
+- Pandas avancé : groupby, merge, pivot_table
