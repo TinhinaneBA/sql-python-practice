@@ -1,22 +1,80 @@
-# Pratique SQL & Python — Data Science
+# 🗄️ SQL & Python Practice
 
-Exercices progressifs SQL et Python pour l'analyse de données.
-De la syntaxe de base aux requêtes avancées niveau Data Scientist.
+**Carnet d'apprentissage structuré** — SQL (des bases à l'avancé) et son miroir en pandas, en vue du module M2 *Big Data — Fouille de données* et de la maîtrise SQL/Oracle attendue en entretien Data Science.
 
-## Contenu
+> Ce repo n'est pas un projet portfolio à proprement parler, mais un suivi de montée en compétence documenté — chaque notebook est autonome, exécutable et commenté.
 
-| Notebook | Sujet | Niveau | Statut |
-|---|---|---|---|
-| 01_sql_basics.ipynb | SELECT, WHERE, GROUP BY, JOIN | Bases | ✅ Terminé |
-| 02_sql_advanced.ipynb | Window Functions, CTEs, Subqueries | Avancé | 🔄 En cours |
-| 03_pandas_advanced.ipynb | groupby, merge, apply, pivot | Avancé | 📅 Prévu |
+---
 
-## Ce que j'ai appris
-- 10 requêtes SQL progressives sur base SQLite — des bases aux jointures 3 tables
-- Fonctions d'agrégation : COUNT, AVG, SUM, HAVING
-- Connexion SQLite → Python → Pandas
+## 📊 Statut
 
-## Prochaines étapes
-- Window functions : RANK, ROW_NUMBER, LAG, LEAD
-- CTEs et subqueries corrélées
-- Pandas avancé : groupby, merge, pivot_table
+| Notebook | Sujet | Statut |
+|---|---|---|
+| [`01_sql_basics.ipynb`](sql/basics/01_sql_basics.ipynb) | SELECT, WHERE, GROUP BY, JOIN — 10 requêtes progressives, jusqu'à des jointures 3 tables | ✅ Terminé |
+| [`02_sql_advanced.ipynb`](sql/advanced/02_sql_advanced.ipynb) | Window Functions (ROW_NUMBER, RANK, DENSE_RANK, PARTITION BY, LAG, moyenne mobile), CTEs simples et chaînées, subqueries corrélées, CTE récursive | ✅ Terminé |
+| [`03_pandas_advanced.ipynb`](pandas/advanced/03_pandas_advanced.ipynb) | Miroir pandas du notebook 02 — merge, groupby, rank, transform, shift, rolling, apply, pivot_table | ✅ Terminé |
+| `04_oracle_specifics.ipynb` | PL/SQL, DUAL, ROWNUM, séquences — spécificités Oracle via DataGrip | 📅 À venir |
+
+---
+
+## 🎯 Objectif
+
+Passer d'une maîtrise SQL basique à un niveau **avancé et orienté Data Science** (feature engineering directement en base, window functions, CTEs), avec en miroir systématique l'équivalent pandas — pour pouvoir justifier en entretien *pourquoi* choisir l'un ou l'autre selon le contexte, pas seulement savoir écrire les deux.
+
+Le notebook `02` et son miroir `03` s'appuient volontairement sur un **jeu de données réaliste** (communes normandes + relevés de pollution, cohérent avec le projet [EcoSense](https://github.com/TinhinaneBA/ecosense)) plutôt que des tables jouets déconnectées — chaque requête répond à une vraie question métier.
+
+---
+
+## 🛠️ Stack technique
+
+`SQLite` (pratique locale, zéro config) · `pandas` · `Jupyter` · `DataGrip` (à venir pour le volet Oracle)
+
+---
+
+## ⚙️ Installation & utilisation
+
+```bash
+git clone https://github.com/TinhinaneBA/sql-python-practice.git
+cd sql-python-practice
+
+python -m venv venv
+source venv/bin/activate       # Linux/Mac
+venv\Scripts\activate          # Windows
+
+pip install jupyter pandas numpy
+
+jupyter notebook
+```
+
+Chaque notebook est **autonome** : la base SQLite (ou les DataFrames pandas) est générée directement dans le notebook via un seed fixe (`np.random.seed(42)`), donc aucun fichier de données externe n'est nécessaire pour les exécuter.
+
+---
+
+## 📁 Structure
+
+```
+sql-python-practice/
+├── sql/
+│   ├── basics/
+│   │   └── 01_sql_basics.ipynb
+│   └── advanced/
+│       └── 02_sql_advanced.ipynb
+├── pandas/
+│   └── advanced/
+│       └── 03_pandas_advanced.ipynb
+└── README.md
+```
+
+---
+
+## 🔜 Prochaines étapes
+
+- Volet Oracle (`04_oracle_specifics.ipynb`) via DataGrip, sur Oracle XE ou un conteneur Docker — documenter les différences de syntaxe avec SQLite (DUAL, ROWNUM vs LIMIT, séquences, blocs PL/SQL)
+- Ce repo sera mis en pause une fois `04` complété, le temps de me concentrer sur un 5ᵉ projet portfolio réutilisant ces compétences (requêtage SQL avancé sur une vraie base, en lien avec un des projets existants)
+
+---
+
+## 👤 Auteur
+
+**Tinhinane** — Étudiante M2 IWOCS, Université Le Havre Normandie
+[GitHub](https://github.com/TinhinaneBA) · [Portfolio](https://github.com/TinhinaneBA)
