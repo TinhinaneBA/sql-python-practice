@@ -12,7 +12,7 @@
 |---|---|---|
 | [`01_sql_basics.ipynb`](sql/basics/01_sql_basics.ipynb) | SELECT, WHERE, GROUP BY, JOIN — 10 requêtes progressives, jusqu'à des jointures 3 tables | ✅ Terminé |
 | [`02_sql_advanced.ipynb`](sql/advanced/02_sql_advanced.ipynb) | Window Functions (ROW_NUMBER, RANK, DENSE_RANK, PARTITION BY, LAG, moyenne mobile), CTEs simples et chaînées, subqueries corrélées, CTE récursive | ✅ Terminé |
-| [`03_pandas_advanced.ipynb`](pandas/advanced/03_pandas_advanced.ipynb) | Miroir pandas du notebook 02 — merge, groupby, rank, transform, shift, rolling, apply, pivot_table | ✅ Terminé |
+| [`03_pandas_advanced.ipynb`](sql/advanced/03_pandas_advanced.ipynb) | Miroir pandas du notebook 02 — merge, groupby, rank, transform, shift, rolling, apply, pivot_table | ✅ Terminé |
 | `04_oracle_specifics.ipynb` | PL/SQL, DUAL, ROWNUM, séquences — spécificités Oracle via DataGrip | 📅 À venir |
 
 ---
@@ -46,7 +46,7 @@ pip install jupyter pandas numpy
 jupyter notebook
 ```
 
-Chaque notebook est **autonome** : la base SQLite (ou les DataFrames pandas) est générée directement dans le notebook via un seed fixe (`np.random.seed(42)`), donc aucun fichier de données externe n'est nécessaire pour les exécuter.
+Chaque notebook est **autonome** : la base SQLite (ou les DataFrames pandas) est générée directement dans le notebook via un seed fixe (`np.random.seed(42)`), donc aucun fichier de données externe n'est nécessaire pour les exécuter — à l'exception de `01_sql_basics.ipynb` qui s'appuie sur `boutique.db` (base SQLite fournie dans `sql/basics/`).
 
 ---
 
@@ -56,11 +56,10 @@ Chaque notebook est **autonome** : la base SQLite (ou les DataFrames pandas) est
 sql-python-practice/
 ├── sql/
 │   ├── basics/
-│   │   └── 01_sql_basics.ipynb
+│   │   ├── 01_sql_basics.ipynb
+│   │   └── boutique.db
 │   └── advanced/
-│       └── 02_sql_advanced.ipynb
-├── pandas/
-│   └── advanced/
+│       ├── 02_sql_advanced.ipynb
 │       └── 03_pandas_advanced.ipynb
 └── README.md
 ```
