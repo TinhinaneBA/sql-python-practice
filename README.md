@@ -1,23 +1,29 @@
-# 🗄️ SQL & Python Practice
+#  SQL & Python Practice
 
-**Carnet d'apprentissage structuré** — SQL (des bases à l'avancé) et son miroir en pandas, en vue du module M2 *Big Data — Fouille de données* et de la maîtrise SQL/Oracle attendue en entretien Data Science.
+**Carnet d'apprentissage structuré et complet** — SQL (des bases à l'avancé, jusqu'à Oracle/PL-SQL) et son miroir en pandas, construit en vue du module M2 *Big Data — Fouille de données* et de la maîtrise SQL/Oracle attendue en entretien Data Science.
 
 > Ce repo n'est pas un projet portfolio à proprement parler, mais un suivi de montée en compétence documenté — chaque notebook est autonome, exécutable et commenté.
 
 ---
 
-## 📊 Statut
+##  Statut
 
 | Notebook | Sujet | Statut |
 |---|---|---|
 | [`01_sql_basics.ipynb`](sql/basics/01_sql_basics.ipynb) | SELECT, WHERE, GROUP BY, JOIN — 10 requêtes progressives, jusqu'à des jointures 3 tables | ✅ Terminé |
 | [`02_sql_advanced.ipynb`](sql/advanced/02_sql_advanced.ipynb) | Window Functions (ROW_NUMBER, RANK, DENSE_RANK, PARTITION BY, LAG, moyenne mobile), CTEs simples et chaînées, subqueries corrélées, CTE récursive | ✅ Terminé |
 | [`03_pandas_advanced.ipynb`](sql/advanced/03_pandas_advanced.ipynb) | Miroir pandas du notebook 02 — merge, groupby, rank, transform, shift, rolling, apply, pivot_table | ✅ Terminé |
-| `04_oracle_specifics.ipynb` | PL/SQL, DUAL, ROWNUM, séquences — spécificités Oracle via DataGrip | 📅 À venir |
+| [`04_oracle_specifics.ipynb`](sql/oracle/04_oracle_specifics.ipynb) | PL/SQL, DUAL, ROWNUM vs FETCH FIRST, séquences, curseurs, fonctions/procédures stockées, exceptions — testé en conditions réelles sur Oracle XE (Docker) via DataGrip | ✅ Terminé |
 
 ---
 
-## 🎯 Objectif
+##  Repo complet — mis en pause
+
+Les 4 notebooks sont terminés et validés. Ce repo passe en pause : prochaine étape, un 5ᵉ projet portfolio réutilisant ces compétences SQL/Oracle sur un vrai cas d'usage.
+
+---
+
+##  Objectif
 
 Passer d'une maîtrise SQL basique à un niveau **avancé et orienté Data Science** (feature engineering directement en base, window functions, CTEs), avec en miroir systématique l'équivalent pandas — pour pouvoir justifier en entretien *pourquoi* choisir l'un ou l'autre selon le contexte, pas seulement savoir écrire les deux.
 
@@ -25,13 +31,13 @@ Le notebook `02` et son miroir `03` s'appuient volontairement sur un **jeu de do
 
 ---
 
-## 🛠️ Stack technique
+##  Stack technique
 
 `SQLite` (pratique locale, zéro config) · `pandas` · `Jupyter` · `DataGrip` (à venir pour le volet Oracle)
 
 ---
 
-## ⚙️ Installation & utilisation
+##  Installation & utilisation
 
 ```bash
 git clone https://github.com/TinhinaneBA/sql-python-practice.git
@@ -50,7 +56,7 @@ Chaque notebook est **autonome** : la base SQLite (ou les DataFrames pandas) est
 
 ---
 
-## 📁 Structure
+##  Structure
 
 ```
 sql-python-practice/
@@ -66,14 +72,13 @@ sql-python-practice/
 
 ---
 
-## 🔜 Prochaines étapes
+##  Prochaine étape
 
-- Volet Oracle (`04_oracle_specifics.ipynb`) via DataGrip, sur Oracle XE ou un conteneur Docker — documenter les différences de syntaxe avec SQLite (DUAL, ROWNUM vs LIMIT, séquences, blocs PL/SQL)
-- Ce repo sera mis en pause une fois `04` complété, le temps de me concentrer sur un 5ᵉ projet portfolio réutilisant ces compétences (requêtage SQL avancé sur une vraie base, en lien avec un des projets existants)
+Ce repo est complet et mis en pause. Place au 5ᵉ projet portfolio, qui réutilise ces compétences SQL avancé/Oracle sur un vrai cas d'usage (voir portfolio principal).
 
 ---
 
-## 👤 Auteur
+##  Auteur
 
 **Tinhinane** — Étudiante M2 IWOCS, Université Le Havre Normandie
 [GitHub](https://github.com/TinhinaneBA) · [Portfolio](https://github.com/TinhinaneBA)
