@@ -147,7 +147,6 @@ ORDER BY score_je DESC
 FETCH FIRST 4 ROWS ONLY;
 
 -- SECTION 03 :
-
 -- Observer la séquence déjà créée
 SELECT releve_seq.NEXTVAL FROM DUAL; -- 81
 SELECT releve_seq.CURRVAL FROM DUAL; -- 81
@@ -159,3 +158,100 @@ VALUES (releve_seq.nextval, 1, '2026-01', 41.3);
 COMMIT ;
 
 SELECT * FROM releves_pollution WHERE mois = '2026-01';
+
+-- SECTION 04 : PL/SQL — les blocs anonymes
+
+DECLARE
+    v_nom    communes.nom%TYPE;
+    v_score  communes.score_je%TYPE;
+BEGIN
+    SELECT nom, score_je
+    INTO v_nom, v_score
+    FROM communes
+    WHERE commune_id = 1;
+
+    DBMS_OUTPUT.PUT_LINE('Commune : ' || v_nom || ' - Score JE : ' || v_score);
+END;
+/
+
+DECLARE
+    CURSOR c_communes IS
+        SELECT nom, score_je
+        FROM communes
+        ORDER BY score_je DESC;
+
+    v_nom    communes.nom%TYPE;
+    v_score  communes.score_je%TYPE;
+BEGIN
+    OPEN c_communes;
+    LOOP
+        FETCH c_communes INTO v_nom, v_score;
+        EXIT WHEN c_communes%NOTFOUND;
+
+        DBMS_OUTPUT.PUT_LINE(v_nom || ' : ' || v_score);
+    END LOOP;
+    CLOSE c_communes;
+END;
+/
+
+-- Fonction stockée
+
+CREATE OR REPLACE FUNCTION categoriser_severite (p_score IN NUMBER)
+RETURN VARCHAR2
+IS
+BEGIN
+    IF p_score >= 0.7 THEN
+        RETURN 'CRITIQUE';
+    ELSIF p_score >= 0.35 THEN
+        RETURN 'MODÉRÉ';
+    ELSE
+        RETURN 'BON';
+    END IF;
+END;
+/
+
+SELECT nom, score_je, categoriser_severite(score_je) AS severite
+FROM communes
+ORDER BY score_je DESC;
+
+-- Procédure stockée (paramètres IN/OUT)
+CREATE OR REPLACE PROCEDURE stats_region (
+    p_region        IN  communes.region%TYPE,
+    p_moyenne       OUT NUMBER,
+    p_nb_communes   OUT NUMBER
+)
+IS
+BEGIN
+    SELECT AVG(score_je), COUNT(*)
+    INTO p_moyenne, p_nb_communes
+    FROM communes
+    WHERE region = p_region;
+END;
+/
+
+DECLARE
+    v_moy NUMBER;
+    v_nb  NUMBER;
+BEGIN
+    stats_region('Seine-Maritime', v_moy, v_nb);
+    DBMS_OUTPUT.PUT_LINE('Moyenne : ' || ROUND(v_moy, 3) || ' sur ' || v_nb || ' communes');
+END;
+/
+
+-- Gestion des exceptions
+DECLARE
+    v_score communes.score_je%TYPE;
+BEGIN
+    SELECT score_je INTO v_score
+    FROM communes
+    WHERE commune_id = 999;   -- cet ID n'existe pas
+
+EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        DBMS_OUTPUT.PUT_LINE('Aucune commune trouvée avec cet ID.');
+    WHEN TOO_MANY_ROWS THEN
+        DBMS_OUTPUT.PUT_LINE('Plusieurs lignes trouvées, SELECT INTO en attend une seule.');
+    WHEN OTHERS THEN
+        DBMS_OUTPUT.PUT_LINE('Erreur inattendue : ' || SQLERRM);
+END;
+/
